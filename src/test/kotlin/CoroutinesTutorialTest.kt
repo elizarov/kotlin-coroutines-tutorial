@@ -110,7 +110,7 @@ class CoroutinesTutorialTest {
     @Test
     fun millionDefers() {
         val deferred = (1..1_000_000).map { n ->
-            defer (CommonPool) {
+            async(CommonPool) {
                 n
             }
         }
@@ -124,7 +124,7 @@ class CoroutinesTutorialTest {
     @Test
     fun millionDefersWithDelay() {
         val deferred = (1..1_000_000).map { n ->
-            defer (CommonPool) {
+            async(CommonPool) {
                 delay(1000)
                 n
             }
@@ -144,7 +144,7 @@ class CoroutinesTutorialTest {
     @Test
     fun millionDefersWithDelayExtractFun() {
         val deferred = (1..1_000_000).map { n ->
-            defer (CommonPool) {
+            async(CommonPool) {
                 workload(n)
             }
         }
